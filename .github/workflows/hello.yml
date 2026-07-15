@@ -7,10 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run job1
-        run: echo "job1"
+        run: echo "first job"
 
   job2:
     runs-on: ubuntu-latest
     steps:
       - name: Run job2
-        run: echo "job2"
+        run: echo "second job"
+    needs: job1
