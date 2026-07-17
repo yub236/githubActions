@@ -1,0 +1,12 @@
+name: 3-3-branch-condition workflow
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  branch-condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run on main branch
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "run on main "
