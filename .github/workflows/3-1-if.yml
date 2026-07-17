@@ -1,0 +1,28 @@
+name: 3-1-if workflow
+
+on: 
+  workflow_dispatch:
+    inputs:
+      run_step:
+        description: Run conditional step
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run job1
+        run: echo "job1"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conditional step
+        if: ${{ github.event.inputs.run_step == 'true' }}
+        run: echo "conditional step"
+
+    
+   
