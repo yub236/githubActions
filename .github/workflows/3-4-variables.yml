@@ -1,0 +1,11 @@
+name: 3-4-variables workflow
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  variables-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show variable
+        run: echo "${{ vars.SAMPLE_MESSAGE }}"
