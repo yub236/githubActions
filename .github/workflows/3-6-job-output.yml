@@ -1,0 +1,26 @@
+name: 3-6-job-output
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    outputs:
+      message: ${{ steps.set-message.outputs.message }}
+
+    steps:
+      - name: Set output
+        id: set-message
+        run: echo "message=Hello from job1" >> $GITHUB_OUTPUT
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show output
+        env:
+          MESSAGE: ${{ needs.job1.outputs.message }}
+        run: echo "$MESSAGE"
